@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleCuts Barber Shop</title>
+    
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-cut"></i> StyleCuts Barber</h1>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#booking">Book Now</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="home" class="hero">
+            <h2>Professional Barber Services</h2>
+            <p>Experience premium haircuts and grooming services</p>
+            <button class="cta-button" onclick="scrollToBooking()">Book Appointment</button>
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <div class="services-grid" id="servicesContainer">
+                <!-- Services will be loaded  -->
+                <p>Loading services...</p>
+            </div>
+        </section>
+
+        <section id="booking">
+            <h2>Book an Appointment</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Service *</label>
+                    <select id="service" required>
+                        <option value="">Select a service</option>
+                        <!-- Options will be loaded  -->
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Date *</label>
+                    <input type="date" id="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="time">Time *</label>
+                    <select id="time" required>
+                        <option value="">Select time</option>
+                        <option value="09:00">09:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="13:00">01:00 PM</option>
+                        <option value="14:00">02:00 PM</option>
+                        <option value="15:00">03:00 PM</option>
+                        <option value="16:00">04:00 PM</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-button">Book Now</button>
+            </form>
+            
+            <div id="bookingMessage" class="message"></div>
+        </section>
+
+        <section id="dashboard">
+            <h2>Today's Bookings</h2>
+            <button onclick="loadTodayBookings()" class="refresh-button">
+                <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+            <div id="todayBookings">
+                <p>No bookings yet for today.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 StyleCuts Barber Shop. Open Mon-Sat 9AM-6PM</p>
+            <p>Contact: 012-345-6789 | 123 Barber Street</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
