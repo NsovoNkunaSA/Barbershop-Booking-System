@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-
 const app = express();
 const PORT = 3000;
 
@@ -105,10 +104,11 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Something went wrong!' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Barber shop app running at http://localhost:${PORT}`);
-  console.log(`Bookings in memory: ${bookings.length}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Barber shop app running at http://localhost:${PORT}`);
+    console.log(`Bookings in memory: ${bookings.length}`);
+  });
+}
 
-
-
+module.exports = app;
