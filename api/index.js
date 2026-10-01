@@ -1,30 +1,71 @@
 const express = require('express');
-const path = require('path');
 
 const app = express();
 
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '..')));
-
 let bookings = [];
 
 let services = [
-    { id: 1, name: 'Classic Haircut', price: 28, duration: 30, description: 'A tailored cut, finished with a hot towel and style.' },
-    { id: 2, name: 'Skin Fade', price: 35, duration: 45, description: 'A precise fade with clean detailing around the edges.' },
-    { id: 3, name: 'Beard Sculpt', price: 22, duration: 30, description: 'Shape, line-up, and condition for a well-kept beard.' },
-    { id: 4, name: 'Cut & Beard', price: 48, duration: 60, description: 'The full reset: a fresh haircut and a detailed beard finish.' },
-    { id: 5, name: 'Buzz Cut', price: 20, duration: 20, description: 'An even, clean cut with a sharp neckline.' },
-    { id: 6, name: 'Hot Towel Shave', price: 32, duration: 45, description: 'A close straight-razor shave with a hot towel finish.' },
-    { id: 7, name: 'Kids Cut', price: 22, duration: 30, description: 'A patient, polished haircut for the next generation.' }
+    {
+        id: 1,
+        name: 'Classic Haircut',
+        price: 28,
+        duration: 30,
+        description: 'A tailored cut, finished with a hot towel and style.'
+    },
+    {
+        id: 2,
+        name: 'Skin Fade',
+        price: 35,
+        duration: 45,
+        description: 'A precise fade with clean detailing around the edges.'
+    },
+    {
+        id: 3,
+        name: 'Beard Sculpt',
+        price: 22,
+        duration: 30,
+        description: 'Shape, line-up, and condition for a well-kept beard.'
+    },
+    {
+        id: 4,
+        name: 'Cut & Beard',
+        price: 48,
+        duration: 60,
+        description: 'The full reset: a fresh haircut and a detailed beard finish.'
+    },
+    {
+        id: 5,
+        name: 'Buzz Cut',
+        price: 20,
+        duration: 20,
+        description: 'An even, clean cut with a sharp neckline.'
+    },
+    {
+        id: 6,
+        name: 'Hot Towel Shave',
+        price: 32,
+        duration: 45,
+        description: 'A close straight-razor shave with a hot towel finish.'
+    },
+    {
+        id: 7,
+        name: 'Kids Cut',
+        price: 22,
+        duration: 30,
+        description: 'A patient, polished haircut for the next generation.'
+    }
 ];
 
 
+// Get services
 app.get('/api/services', (req, res) => {
     res.json(services);
 });
 
 
+// Create booking
 app.post('/api/book', (req, res) => {
     const { name, phone, serviceId, date, time } = req.body;
 
@@ -79,6 +120,7 @@ app.post('/api/book', (req, res) => {
 });
 
 
+// Get today's bookings
 app.get('/api/bookings/today', (req, res) => {
     const today = new Date().toISOString().split('T')[0];
 
@@ -100,6 +142,7 @@ app.get('/api/bookings/today', (req, res) => {
 });
 
 
+// Delete booking
 app.delete('/api/bookings/:id', (req, res) => {
     const id = parseInt(req.params.id);
 
@@ -122,13 +165,7 @@ app.delete('/api/bookings/:id', (req, res) => {
 });
 
 
-app.get('/', (req, res) => {
-    res.sendFile(
-        path.join(__dirname, '..', 'index.html')
-    );
-});
-
-
+// Error handler
 app.use((err, req, res, next) => {
     console.error(err.stack);
 
