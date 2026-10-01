@@ -9,6 +9,9 @@
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -31,7 +34,6 @@
             padding: 0 20px;
         }
 
-        /* Header */
         header {
             background-color: #1a1a1a;
             color: white;
@@ -65,7 +67,6 @@
             color: #ffd700;
         }
 
-        /* Hero Section */
         .hero {
             text-align: center;
             padding: 4rem 0;
@@ -101,7 +102,6 @@
             transform: scale(1.05);
         }
 
-        /* Services */
         #services {
             padding: 3rem 0;
         }
@@ -137,7 +137,6 @@
             margin: 0.5rem 0;
         }
 
-        /* Booking Form */
         #booking {
             background: white;
             padding: 2rem;
@@ -201,7 +200,6 @@
             display: block;
         }
 
-        /* Dashboard */
         #dashboard {
             padding: 2rem 0;
         }
@@ -247,7 +245,6 @@
             cursor: pointer;
         }
 
-        /* Footer */
         footer {
             background-color: #1a1a1a;
             color: white;
@@ -260,7 +257,6 @@
             margin: 0.5rem 0;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
 
             header .container {
@@ -274,6 +270,379 @@
 
             .hero h2 {
                 font-size: 2rem;
+            }
+        }
+
+        :root {
+            color-scheme: light;
+            --ink: #20231f;
+            --paper: #f4f1e9;
+            --white: #fffefa;
+            --rust: #b84932;
+            --rust-dark: #923923;
+            --olive: #75805a;
+            --muted: #716f68;
+            --line: #dedbd2;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .container {
+            max-width: 1180px;
+        }
+
+        header {
+            background: var(--ink);
+            padding: 1rem 0;
+        }
+
+        h1,
+        h2,
+        .service-card h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        h1 {
+            font-size: 1.45rem;
+        }
+
+        h1 i {
+            color: #e29b61;
+        }
+
+        nav a {
+            margin-left: 1.25rem;
+            font-size: .9rem;
+            color: #f2eee5;
+        }
+
+        nav a:hover {
+            color: #e29b61;
+        }
+
+        .hero {
+            width: 100vw;
+            max-width: none;
+            min-height: 520px;
+            margin: 0 0 4.5rem calc((min(90vw, 1180px) - 100vw) / 2);
+            padding: 7rem max(5vw, calc((100vw - 1080px) / 2));
+            border-radius: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            background-image: linear-gradient(90deg, rgba(19, 22, 19, .88), rgba(19, 22, 19, .18)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=2000&q=85');
+            background-position: center 44%;
+        }
+
+        .hero h2 {
+            max-width: 700px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 5.4rem;
+            line-height: 1.02;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero p {
+            max-width: 440px;
+            color: #eee9df;
+            font-size: 1.1rem;
+        }
+
+        .cta-button,
+        .submit-button {
+            background: var(--rust);
+            color: white;
+            border-radius: 2px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: .95rem;
+            font-weight: 700;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .cta-button:hover,
+        .submit-button:hover {
+            background: var(--rust-dark);
+        }
+
+        #services,
+        #booking,
+        #about,
+        #dashboard {
+            padding: 1rem 0 4rem;
+        }
+
+        #services > h2,
+        #booking > h2,
+        #about h2,
+        #dashboard > h2 {
+            font-size: 2.5rem;
+            margin-bottom: .5rem;
+        }
+
+        .services-grid {
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+        }
+
+        .service-card {
+            min-height: 270px;
+            padding: 1.5rem;
+            border-radius: 0;
+            box-shadow: none;
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: background .2s ease;
+            animation: arrive .45s both;
+            animation-delay: calc(var(--card-index, 0) * 45ms);
+        }
+
+        .service-card:hover {
+            transform: none;
+            background: #faf6ed;
+        }
+
+        .service-icon {
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            background: #e9ecdf;
+            color: var(--olive);
+            margin-bottom: 1.2rem;
+        }
+
+        .service-duration {
+            color: var(--muted);
+            font-size: .78rem;
+            text-transform: uppercase;
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            margin: .25rem 0 .5rem;
+        }
+
+        .service-description {
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        .service-details {
+            width: 100%;
+            margin-top: auto;
+            padding-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price {
+            color: var(--rust);
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .service-book {
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--line);
+            background: transparent;
+            color: var(--ink);
+            cursor: pointer;
+        }
+
+        .service-book:hover {
+            background: var(--ink);
+            color: white;
+        }
+
+        #booking {
+            padding: 2.5rem;
+            border-radius: 0;
+            box-shadow: none;
+            background: #e8e5da;
+        }
+
+        #booking > h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        #bookingForm {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0 1.25rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            font-size: .88rem;
+        }
+
+        input,
+        select {
+            min-height: 48px;
+            border: 1px solid #cbc8bd;
+            border-radius: 2px;
+            background: var(--white);
+            font: inherit;
+        }
+
+        input:focus,
+        select:focus,
+        button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid rgba(184, 73, 50, .35);
+            outline-offset: 2px;
+        }
+
+        .submit-button {
+            grid-column: 1 / -1;
+            width: auto;
+            min-height: 50px;
+            margin-top: .25rem;
+        }
+
+        .message {
+            border-radius: 2px;
+        }
+
+        #about {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(240px, .8fr);
+            align-items: center;
+            gap: 3rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        #about p {
+            max-width: 620px;
+            color: var(--muted);
+        }
+
+        .about-note {
+            padding: 1.5rem;
+            border-left: 3px solid var(--rust);
+            background: #e9ecdf;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.25rem;
+        }
+
+        .refresh-button {
+            background: var(--olive);
+            border-radius: 2px;
+        }
+
+        .booking-list {
+            border-radius: 2px;
+            box-shadow: none;
+            border: 1px solid var(--line);
+        }
+
+        .booking-item {
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .delete-btn {
+            background: var(--rust);
+            border-radius: 2px;
+        }
+
+        footer {
+            margin-top: 0;
+            background: var(--ink);
+            color: #e8e5da;
+        }
+
+        @keyframes arrive {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 450px;
+                margin-bottom: 3rem;
+                padding: 5rem 7vw;
+                background-position: 58% center;
+            }
+
+            .hero h2 {
+                font-size: 3.3rem;
+            }
+
+            #booking {
+                padding: 1.5rem;
+            }
+
+            #about {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 520px) {
+            header .container {
+                width: 100%;
+                padding: 0 1rem;
+            }
+
+            h1 {
+                font-size: 1.25rem;
+            }
+
+            nav {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                gap: .5rem;
+            }
+
+            nav a {
+                margin: 0;
+                font-size: .78rem;
+            }
+
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+
+            #bookingForm {
+                grid-template-columns: 1fr;
+            }
+
+            #booking > h2,
+            #services > h2,
+            #about h2,
+            #dashboard > h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
             }
         }
     </style>
@@ -463,6 +832,15 @@
                 class="message">
             </div>
 
+        </section>
+
+
+        <section id="about">
+            <div>
+                <h2>Good cuts. Good company.</h2>
+                <p>StyleCuts is your neighborhood spot for considered cuts, careful detailing, and a little time well spent. Every appointment is shaped around you, from the first consultation to the final finish.</p>
+            </div>
+            <p class="about-note">Walk in looking for a change. Walk out feeling like yourself.</p>
         </section>
 
 

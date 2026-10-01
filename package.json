@@ -1,16 +1,19 @@
 {
   "name": "barber",
   "version": "1.0.0",
-  "description": "",
+  "description": "Barbershop service booking website",
   "main": "api/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node api/index.js"
+    "test": "node --check script.js && node --check api/index.js",
+    "start": "node -e \"require('./api').listen(process.env.PORT || 3000, () => console.log('Server running'))\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "express": "^5.2.1"
   }
